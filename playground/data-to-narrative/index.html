@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data-to-Narrative Helper</title>
+    <meta
+      name="description"
+      content="Upload or paste CSV data and generate a narrative summary with key insights."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="kicker">R&D Playground</p>
+        <h1>Data-to-Narrative Helper</h1>
+        <p class="lede">
+          Upload a CSV (or paste rows), then get a quick narrative: what happened, where it changed, and what to do
+          next.
+        </p>
+      </header>
+
+      <section class="card input-card">
+        <h2>1) Data Input</h2>
+        <div class="row">
+          <label for="csvFile">Upload CSV</label>
+          <input id="csvFile" type="file" accept=".csv,text/csv" />
+        </div>
+        <div class="row">
+          <label for="csvText">Or paste CSV</label>
+          <textarea
+            id="csvText"
+            rows="10"
+            placeholder="Example:
+channel,month,sessions,conversions
+Email,2026-01,1200,66
+Social,2026-01,2100,74"
+          ></textarea>
+        </div>
+        <div class="row controls">
+          <button id="runBtn" type="button">Generate Narrative</button>
+          <button id="loadSampleBtn" type="button" class="ghost">Load Sample</button>
+          <span id="status" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="card" id="schemaCard" hidden>
+        <h2>2) Schema Snapshot</h2>
+        <div id="schemaGrid" class="schema-grid"></div>
+      </section>
+
+      <section class="card" id="insightsCard" hidden>
+        <h2>3) Key Insights</h2>
+        <ol id="insightsList" class="insights"></ol>
+      </section>
+
+      <section class="card" id="narrativeCard" hidden>
+        <h2>4) Narrative Draft</h2>
+        <div class="draft">
+          <h3>Headline</h3>
+          <p id="headlineText"></p>
+          <h3>Problem</h3>
+          <p id="problemText"></p>
+          <h3>Insight</h3>
+          <p id="insightText"></p>
+          <h3>Action</h3>
+          <p id="actionText"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

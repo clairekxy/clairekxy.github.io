@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data-to-Story Slideshow Maker</title>
+    <meta
+      name="description"
+      content="Turn CSV data into a 3-slide story draft with chart recommendations and speaker notes."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">R&D Playground</p>
+        <h1>Data-to-Story Slideshow Maker</h1>
+        <p>
+          Upload CSV data, generate a 3-slide narrative deck draft, then export as Markdown for docs, Notion, or
+          slides.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>Input</h2>
+        <div class="field">
+          <label for="csvFile">Upload CSV</label>
+          <input id="csvFile" type="file" accept=".csv,text/csv" />
+        </div>
+        <div class="field">
+          <label for="csvText">Or paste CSV</label>
+          <textarea id="csvText" rows="10" placeholder="channel,month,sessions,conversions,revenue"></textarea>
+        </div>
+        <div class="actions">
+          <button id="generateBtn" type="button">Generate Slides</button>
+          <button id="sampleBtn" type="button" class="ghost">Load Sample</button>
+          <button id="copyBtn" type="button" class="ghost" disabled>Copy Markdown</button>
+          <button id="downloadBtn" type="button" class="ghost" disabled>Download .md</button>
+          <span id="status" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="panel" id="schemaPanel" hidden>
+        <h2>Detected Schema</h2>
+        <div id="schema"></div>
+      </section>
+
+      <section class="panel" id="slidesPanel" hidden>
+        <h2>Generated 3-Slide Draft</h2>
+        <div id="slides" class="slides"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
